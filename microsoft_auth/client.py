@@ -49,8 +49,8 @@ class MicrosoftClient(OAuth2Session):
             scope = " ".join(self.SCOPE_XBL)
 
         scheme = "https"
-        if config.DEBUG and request is not None:
-            scheme = request.scheme
+        # if config.DEBUG and request is not None:
+            # scheme = request.scheme
 
         super().__init__(
             self.config.MICROSOFT_AUTH_CLIENT_ID,
