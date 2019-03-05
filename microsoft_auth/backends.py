@@ -57,6 +57,7 @@ class MicrosoftAuthenticationBackend(ModelBackend):
 
         return user
 
+
     def _authenticate_user(self):
         if self.config.MICROSOFT_AUTH_LOGIN_TYPE == LOGIN_TYPE_XBL:
             return self._authenticate_xbox_user()
