@@ -60,7 +60,15 @@ DEFAULT_CONFIG = {
             (
                 "MICROSOFT_AUTH_TENANT_ID",
                 (
+                    "common",
                     "",
+                    str,
+                ),
+            ),
+            (
+                "MICROSOFT_AUTH_SCOPE",
+                (
+                    "User.Read",
                     "",
                     str,
                 ),

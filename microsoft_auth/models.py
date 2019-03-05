@@ -28,6 +28,9 @@ class MicrosoftAccount(models.Model):
         null=True,
         related_name="microsoft_account",
     )
+    token = models.CharField(null=True, blank=True, max_length=512)
+    token_expires = models.DateTimeField(blank=True, null=True) # ALWAYS UTC!!!!!!
+    refresh_token = models.CharField(blank=True, null=True, max_length=512)
 
     def __str__(self):
         return self.microsoft_id

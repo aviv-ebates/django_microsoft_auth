@@ -43,7 +43,7 @@ class MicrosoftClient(OAuth2Session):
 
         domain = Site.objects.get_current().domain
         path = reverse("microsoft_auth:auth-callback")
-        scope = " ".join(self.SCOPE_MICROSOFT)
+        scope = self.config.MICROSOFT_AUTH_SCOPE
 
         if self.config.MICROSOFT_AUTH_LOGIN_TYPE == LOGIN_TYPE_XBL:
             scope = " ".join(self.SCOPE_XBL)
@@ -76,7 +76,7 @@ class MicrosoftClient(OAuth2Session):
         tenant = self.config.MICROSOFT_AUTH_TENANT_ID
         url = self._token_url.replace('TENANT', tenant)
         return super().fetch_token(
-            self._token_url,
+            url,
             client_secret=self.config.MICROSOFT_AUTH_CLIENT_SECRET,
             **kwargs
         )
