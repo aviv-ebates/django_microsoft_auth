@@ -13,12 +13,12 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='microsoftaccount',
             name='refresh_token',
-            field=models.CharField(max_length=512, null=True),
+            field=models.CharField(max_length=4096, null=True),
         ),
         migrations.AddField(
             model_name='microsoftaccount',
             name='token',
-            field=models.CharField(max_length=512, null=True),
+            field=models.CharField(max_length=4096, null=True),
         ),
         migrations.AddField(
             model_name='microsoftaccount',
