@@ -95,6 +95,7 @@ class AuthenticateCallbackView(View):
             or not len(state) == CSRF_TOKEN_LENGTH
             or not _compare_salted_tokens(state, get_token(self.request))
         ):
+            logging.warn('bad state token ]%s[', state)
             self.context["message"] = {"error": "bad_state"}
 
     def _check_microsoft_response(self, error, error_description):
