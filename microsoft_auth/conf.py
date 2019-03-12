@@ -61,7 +61,10 @@ DEFAULT_CONFIG = {
                 "MICROSOFT_AUTH_TENANT_ID",
                 (
                     "common",
-                    "",
+                    _(
+                        "Which Microsoft Tenant to use. Default is \"common\","
+                        "used for public apps."
+                    ),
                     str,
                 ),
             ),
@@ -69,8 +72,25 @@ DEFAULT_CONFIG = {
                 "MICROSOFT_AUTH_SCOPE",
                 (
                     "User.Read",
-                    "",
+                    _("Oauth scopes to request (Microsoft Account only)"),
                     str,
+                ),
+            ),
+            (
+                "MICROSOFT_AUTH_STORE_TOKEN",
+                (
+                    False,
+                    _(
+                        "Should we store the user's access token."
+                        "\n"
+                        "Note that the tokens are normaly short-lived, so you"
+                        "will also need to specify `offline_access` scope to"
+                        "get a refresh token. see"
+                        "https://docs.microsoft.com/en-us/azure/" +
+                        "active-directory/develop/v1-protocols-oauth-code" +
+                        "#refreshing-the-access-tokens"
+                    ),
+                    bool,
                 ),
             ),
             (

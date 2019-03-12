@@ -48,11 +48,12 @@ class MicrosoftAuthenticationBackend(ModelBackend):
                 user = self._authenticate_user()
                 if user is not None:
                     account = user.microsoft_account
-                    account.token = token['access_token']
-                    expires_at = token.get('expires_at')
-                    if expires_at:
-                        account.token_expires = datetime.datetime.fromtimestamp(expires_at)
-                    account.refresh_token = token.get('refresh_token')
+                    if self.config.MICROSOFT_AUTH_STORE_TOKEN:
+                        account.token = token['access_token']
+                        expires_at = token.get('expires_at')
+                        if expires_at:
+                            account.token_expires = datetime.datetime.fromtimestamp(expires_at)
+                        account.refresh_token = token.get('refresh_token')
                     account.save()
 
         return user
