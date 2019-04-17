@@ -27,11 +27,13 @@ if admin.site.is_registered(User):
 
 @admin.register(MicrosoftAccount)
 class MicrosoftAccountAdmin(*base_admin):
+    exclude = ('token', 'refresh_token',)
     readonly_fields = ("microsoft_id",)
 
 
 class MicrosoftAccountInlineAdmin(admin.StackedInline):
     model = MicrosoftAccount
+    exclude = ('token', 'refresh_token',)
     readonly_fields = ("microsoft_id",)
 
 
