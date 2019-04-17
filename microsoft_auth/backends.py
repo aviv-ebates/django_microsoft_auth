@@ -46,11 +46,11 @@ class MicrosoftAuthenticationBackend(ModelBackend):
                 token["scope"]
             ):
                 user = self._authenticate_user()
-                self._store_token_if_needed(user)
+                self._store_token_if_needed(user, token)
 
         return user
 
-    def _store_token_if_needed(self, user):
+    def _store_token_if_needed(self, user, token):
         if self.config.MICROSOFT_AUTH_STORE_TOKEN and user is not None:
             account = user.microsoft_account
             account.token = token['access_token']
